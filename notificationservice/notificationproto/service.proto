@@ -1,0 +1,17 @@
+syntax = "proto3";
+package notificationproto;
+option go_package = "golang_server_side_streaming/notificationproto";
+
+service NotificationService {
+  rpc GetNotifications(NotificationRequest) returns (stream Notification) {}
+}
+
+message NotificationRequest{
+  string user_id = 1;
+}
+
+message Notification {
+  string user_id = 1;
+  string content = 2;
+  int64 created_at = 3;
+}
